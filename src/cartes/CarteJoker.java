@@ -4,24 +4,25 @@ import utils.Couleur;
 import utils.TypeAction;
 
 public class CarteJoker extends Carte {
-    private final TypeAction action; // JOKER ou PLUS_QUATRE
+    private final TypeAction typeAction;
 
-    public CarteJoker(TypeAction action) {
-        super(Couleur.AUCUNE); // couleur définie par le joueur après avoir joué la carte
-        this.action = action;
-    }
-
-    public TypeAction getAction() {
-        return action;
+    public CarteJoker(TypeAction typeAction) {
+        super(Couleur.AUCUNE); // Joker n'a pas de couleur définie au départ
+        this.typeAction = typeAction;
     }
 
     @Override
-    public boolean estJouable(Carte carteDessus) {
-        return true; // Les jokers peuvent être joués sur n'importe quelle carte
+    public boolean estJouable(Carte carteTalon) {
+        return true; // Toujours jouable
+    }
+
+    @Override
+    public TypeAction getTypeAction() {
+        return typeAction;
     }
 
     @Override
     public String toString() {
-        return action == TypeAction.PLUS_QUATRE ? "+4 (JOKER)" : "JOKER";
+        return "JOKER " + typeAction;
     }
 }

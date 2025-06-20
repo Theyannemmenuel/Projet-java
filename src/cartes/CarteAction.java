@@ -4,31 +4,26 @@ import utils.Couleur;
 import utils.TypeAction;
 
 public class CarteAction extends Carte {
-    private TypeAction action;
+    private final TypeAction typeAction;
 
-    public CarteAction(Couleur couleur, TypeAction action) {
+    public CarteAction(Couleur couleur, TypeAction typeAction) {
         super(couleur);
-        this.action = action;
-    }
-
-    public TypeAction getAction() {
-        return action;
+        this.typeAction = typeAction;
     }
 
     @Override
-    public boolean estJouable(Carte carteDessus) {
-        return this.couleur == carteDessus.getCouleur() ||
-               (carteDessus instanceof CarteAction && this.action == ((CarteAction) carteDessus).getAction());
-    }
-
-    @Override
-    public String toString() {
-        return couleur + " " + action;
+    public boolean estJouable(Carte carteTalon) {
+        return this.couleur == carteTalon.getCouleur() ||
+               (carteTalon instanceof CarteAction && ((CarteAction) carteTalon).getTypeAction() == this.typeAction);
     }
 
     @Override
     public TypeAction getTypeAction() {
-      // TODO Auto-generated method stub
-      throw new UnsupportedOperationException("Unimplemented method 'getTypeAction'");
+        return typeAction;
+    }
+
+    @Override
+    public String toString() {
+        return couleur + " " + typeAction;
     }
 }

@@ -1,42 +1,25 @@
-package moteur;
+package jeu;
 
-import java.util.Stack;
+import cartes.Carte;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Talon {
-    private Stack<Carte> pile;
+    private List<Carte> cartes;
 
     public Talon() {
-        pile = new Stack<>();
+        this.cartes = new ArrayList<>();
     }
 
-    // Poser une carte sur le talon
-    public void poserCarte(Carte carte) {
-        pile.push(carte);
+    public void ajouterCarte(Carte carte) {
+        cartes.add(carte);
     }
 
-    // Récupérer la carte du dessus du talon sans la retirer
-    public Carte getCarteDuDessus() {
-        if (!pile.isEmpty()) {
-            return pile.peek();
+    public Carte getDerniereCarte() {
+        if (cartes.isEmpty()) {
+            return null;
         }
-        return null;
-    }
-
-    // Retirer la carte du dessus (si besoin)
-    public Carte retirerCarteDuDessus() {
-        if (!pile.isEmpty()) {
-            return pile.pop();
-        }
-        return null;
-    }
-
-    // Vérifier si le talon est vide
-    public boolean estVide() {
-        return pile.isEmpty();
-    }
-
-    // Taille du talon
-    public int taille() {
-        return pile.size();
+        return cartes.get(cartes.size() - 1);
     }
 }

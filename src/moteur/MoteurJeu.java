@@ -3,7 +3,7 @@ package moteur;
 import cartes.Carte;
 import jeu.Jeu;
 import joueur.Joueur;
-import utils.TypeAction;
+
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class MoteurJeu {
                 jeu.getTalon().ajouterCarte(carteJouee);
                 System.out.println(joueur.getNom() + " joue : " + carteJouee);
                 appliquerEffet(carteJouee);
-                if (joueur.getMain().isEmpty()) {
+                if (joueur.aGagne()) {
                     System.out.println(joueur.getNom() + " a gagné !");
                     partieTerminee = true;
                     continue;
@@ -82,7 +82,7 @@ public class MoteurJeu {
             }
             case JOKER -> {
                 System.out.println("Carte joker jouée. Couleur à choisir par le joueur.");
-                // À compléter si choix de couleur par joueur
+                // À compléter pour la gestion manuelle de la couleur
             }
             default -> {}
         }

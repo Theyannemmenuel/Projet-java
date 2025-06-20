@@ -2,20 +2,13 @@ package moteur;
 
 public class GestionTour {
     private int indexActuel;
-    private int sens = 1; // 1 = horaire, -1 = antihoraire
+    private int sens;
     private final int nbJoueurs;
 
     public GestionTour(int nbJoueurs) {
         this.nbJoueurs = nbJoueurs;
         this.indexActuel = 0;
-    }
-
-    public void tourSuivant() {
-        indexActuel = (indexActuel + sens + nbJoueurs) % nbJoueurs;
-    }
-
-    public void inverserSens() {
-        sens *= -1;
+        this.sens = 1; // 1 = sens horaire, -1 = sens antihoraire
     }
 
     public int getIndexActuel() {
@@ -24,5 +17,13 @@ public class GestionTour {
 
     public int getProchainIndex() {
         return (indexActuel + sens + nbJoueurs) % nbJoueurs;
+    }
+
+    public void tourSuivant() {
+        indexActuel = (indexActuel + sens + nbJoueurs) % nbJoueurs;
+    }
+
+    public void inverserSens() {
+        sens *= -1;
     }
 }

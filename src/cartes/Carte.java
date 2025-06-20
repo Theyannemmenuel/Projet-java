@@ -1,6 +1,7 @@
 package cartes;
 
 import utils.Couleur;
+import utils.TypeAction;
 
 public abstract class Carte {
     protected Couleur couleur;
@@ -13,12 +14,10 @@ public abstract class Carte {
         return couleur;
     }
 
-    public void setCouleur(Couleur couleur) {
-        this.couleur = couleur;
-    }
+    public abstract boolean estJouable(Carte carteTalon);
 
-    public abstract boolean estJouable(Carte carteDessus);
+    public abstract TypeAction getTypeAction();
 
+    @Override
     public abstract String toString();
 }
-

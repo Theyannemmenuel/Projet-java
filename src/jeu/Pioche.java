@@ -1,51 +1,56 @@
-package moteur;
+package jeu;
 
-import java.util.List;
+import cartes.*;
+import utils.Couleur;
+import utils.TypeAction;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Pioche {
     private List<Carte> cartes;
 
     public Pioche() {
-        cartes = new ArrayList<>();
+        this.cartes = new ArrayList<>();
         initialiserCartes();
         melanger();
     }
 
-    // Initialisation des cartes dans la pioche
     private void initialiserCartes() {
-        // Exemple simple : ajouter des cartes avec différents types
-        for (int i = 0; i < 10; i++) {
-            cartes.add(new Carte(Carte.PASSER));
-            cartes.add(new Carte(Carte.INVERSION));
-            cartes.add(new Carte(Carte.PLUS_DEUX));
+        Couleur[] couleurs = {Couleur.ROUGE, Couleur.JAUNE, Couleur.VERT, Couleur.BLEU};
+
+        for (Couleur couleur : couleurs) {
+            for (int i = 0; i <= 9; i++) {
+                cartes.add(new CarteNumero(couleur, i));
+                if (i != 0) cartes.add(new CarteNumero(couleur, i)); // Doubles sauf 0
+            }
+            cartes.add(new CarteAction(couleur, TypeAction.PASSER));
+            cartes.add(new CarteAction(couleur, TypeAction.PASSER));
+            cartes.add(new CarteAction(couleur, TypeAction.INVERSION));
+            cartes.add(new CarteAction(couleur, TypeAction.INVERSION));
+            cartes.add(new CarteAction(couleur, TypeAction.PLUS_DEUX));
+            cartes.add(new CarteAction(couleur, TypeAction.PLUS_DEUX));
         }
-        // Ajout des cartes spéciales
-        cartes.add(new Carte(Carte.PLUS_QUATRE));
-        cartes.add(new Carte(Carte.JOKER));
+
+        for (int i = 0; i < 4; i++) {
+            cartes.add(new CarteJoker(TypeAction.JOKER));
+            cartes.add(new CarteJoker(TypeAction.PLUS_QUATRE));
+        }
     }
 
-    // Mélanger la pioche
     public void melanger() {
         Collections.shuffle(cartes);
     }
 
-    // Piocher une carte
-    public Carte piocherCarte() {
-        if (!cartes.isEmpty()) {
-            return cartes.remove(cartes.size() - 1);
+    public Carte piocher() {
+        if (cartes.isEmpty()) {
+            throw new IllegalStateException("La pioche est vide !");
         }
-        return null; // ou lever une exception si nécessaire
+        return cartes.remove(0);
     }
 
-    // Vérifier si la pioche est vide
     public boolean estVide() {
         return cartes.isEmpty();
-    }
-
-    // Nombre de cartes restantes dans la pioche
-    public int taille() {
-        return cartes.size();
     }
 }

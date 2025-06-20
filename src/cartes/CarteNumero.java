@@ -1,6 +1,7 @@
 package cartes;
 
 import utils.Couleur;
+import utils.TypeAction;
 
 public class CarteNumero extends Carte {
     private int numero;
@@ -15,9 +16,14 @@ public class CarteNumero extends Carte {
     }
 
     @Override
-    public boolean estJouable(Carte carteDessus) {
-        return this.couleur == carteDessus.getCouleur() ||
-               (carteDessus instanceof CarteNumero && this.numero == ((CarteNumero) carteDessus).getNumero());
+    public boolean estJouable(Carte carteTalon) {
+        return this.couleur == carteTalon.getCouleur() ||
+               (carteTalon instanceof CarteNumero && ((CarteNumero) carteTalon).getNumero() == this.numero);
+    }
+
+    @Override
+    public TypeAction getTypeAction() {
+        return TypeAction.AUCUNE;
     }
 
     @Override

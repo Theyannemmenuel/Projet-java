@@ -25,4 +25,10 @@ public class CarteAction extends Carte {
     public String toString() {
         return couleur + " " + action;
     }
+
+    @Override
+    public TypeAction getTypeAction() {
+      // TODO Auto-generated method stub
+      throw new UnsupportedOperationException("Unimplemented method 'getTypeAction'");
+    }
 }

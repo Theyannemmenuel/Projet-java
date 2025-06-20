@@ -1,19 +1,32 @@
-package jeu;
+package moteur;
 
 import java.util.List;
+import java.util.ArrayList;
 
-// Cette classe va gérer la partie générale (joueurs, pioche, talon, etc.)
 public class Jeu {
-    // À compléter plus tard : liste de joueurs, pioche, talon, etc.
+    private List<Joueur> joueurs;
+    private Talon talon;
+    private Pioche pioche;
 
-    public Jeu(List<String> nomsDesJoueurs) {
-        // Ici on pourra initialiser les cartes et les joueurs
-        // Exemple : initialiserPioche(), distribuerCartes(), etc.
+    // Constructeur prenant une liste de joueurs
+    public Jeu(List<Joueur> joueurs) {
+        this.joueurs = joueurs;
+        this.talon = new Talon();
+        this.pioche = new Pioche();
     }
 
-    // Lancer la partie
-    public void demarrer() {
-        // C'est ici qu'on fera la boucle de jeu principale
-        // Exemple : boucleTourParTour()
+    public Joueur getJoueur(int index) {
+        if(index >= 0 && index < joueurs.size()) {
+            return joueurs.get(index);
+        }
+        return null;
+    }
+
+    public Talon getTalon() {
+        return talon;
+    }
+
+    public Pioche getPioche() {
+        return pioche;
     }
 }

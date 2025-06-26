@@ -1,9 +1,12 @@
 package utils;
 
+/**
+ * Enumération qui représente les couleurs possibles d'une carte UNO.
+ */
 public enum Couleur {
     ROUGE,
     JAUNE,
     VERT,
     BLEU,
-    AUCUNE // Pour les jokers avant qu’une couleur soit choisie
+    AUCUNE  // Utilisé uniquement pour les jokers (au début)
 }

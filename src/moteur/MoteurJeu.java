@@ -42,7 +42,7 @@ public class MoteurJeu {
             // Afficher les cartes du joueur
             afficherMainJoueur(joueur);
             
-            // Demander au joueur ce qu'il veut faire
+            // Demandeer au joueur ce qu'il veut faire
             boolean actionRealisee = false;
             while (!actionRealisee) {
                 System.out.println("\nQue voulez-vous faire ?");
@@ -121,7 +121,7 @@ public class MoteurJeu {
             .toList();
 
         if (cartesJouables.isEmpty()) {
-            System.out.println("❌ Aucune carte jouable ! Vous devez piocher.");
+            System.out.println("❌ Aucune carte jouable allez pioche !.");
             return null;
         }
 
@@ -132,7 +132,7 @@ public class MoteurJeu {
         }
 
         while (true) {
-            System.out.print("Choisissez le numéro de la carte à jouer : ");
+            System.out.print("Choisis le numéro de la carte à jouer : ");
             try {
                 int choix = scanner.nextInt();
                 scanner.nextLine(); // consommer la ligne
@@ -143,13 +143,13 @@ public class MoteurJeu {
                         joueur.retirerCarte(carteChoisie);
                         return carteChoisie;
                     } else {
-                        System.out.println("❌ Cette carte n'est pas jouable !");
+                        System.out.println("❌ la carte n'est pas jouable !");
                     }
                 } else {
-                    System.out.println("❌ Numéro invalide !");
+                    System.out.println("❌ Numéro invalide chef !");
                 }
             } catch (Exception e) {
-                System.out.println("❌ Entrée invalide ! Veuillez entrer un nombre.");
+                System.out.println("❌ Entrée invalide chef !");
                 scanner.nextLine(); // vider le buffer
             }
         }
@@ -159,7 +159,7 @@ public class MoteurJeu {
      * Permet au joueur de choisir une couleur pour un joker.
      */
     private void choisirCouleurJoker(CarteJoker joker) {
-        System.out.println("\nChoisissez une couleur :");
+        System.out.println("\nChoisis une couleur :");
         System.out.println("1 - ROUGE");
         System.out.println("2 - JAUNE");
         System.out.println("3 - VERT");
@@ -184,10 +184,10 @@ public class MoteurJeu {
                     System.out.println("Couleur choisie : " + couleurChoisie);
                     break;
                 } else {
-                    System.out.println("❌ Choix invalide ! Choisissez entre 1 et 4.");
+                    System.out.println("❌ Choix invalide chef ! Choisis entre 1 et 4.");
                 }
             } catch (Exception e) {
-                System.out.println("❌ Entrée invalide ! Veuillez entrer un nombre.");
+                System.out.println("❌ Entrée invalide chef !  entre un nombre.");
                 scanner.nextLine(); // vider le buffer
             }
         }
@@ -207,7 +207,7 @@ public class MoteurJeu {
                 gestionTour.inverserSens();
             }
             case PLUS_DEUX -> {
-                System.out.println("📚 Le prochain joueur pioche 2 cartes !");
+                System.out.println(" Le prochain joueur pioche 2 cartes !");
                 Joueur suivant = jeu.getJoueur(gestionTour.getProchainIndex());
                 for (int i = 0; i < 2; i++) {
                     try {

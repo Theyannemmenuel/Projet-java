@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe qui représente le talon, c’est-à-dire la pile de cartes jouées.
+ * Classe qui représente le talon, c'est-à-dire la pile de cartes jouées.
  */
 public class Talon {
     private List<Carte> cartes;  // Cartes posées sur le talon

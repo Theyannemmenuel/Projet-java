@@ -46,19 +46,4 @@ public class Joueur {
     public boolean aGagne() {
         return main.isEmpty();
     }
-
-    /**
-     * Tente de jouer une carte valide parmi celles que le joueur possède.
-     * Si une carte est jouable, elle est retirée de la main et retournée.
-     * Sinon, retourne null.
-     */
-    public Carte jouerCarte(Carte carteTalon) {
-        for (Carte carte : main) {
-            if (carte.estJouable(carteTalon)) {
-                retirerCarte(carte);
-                return carte;
-            }
-        }
-        return null;
-    }
 }

@@ -6,5 +6,5 @@ public enum TypeAction {
     INVERSION,     // Carte "Inversion"
     PLUS_DEUX,     // Carte "+2"
     JOKER,         // Carte joker (changer de couleur)
-    PLUS_QUATRE    // Carte "+4" + changement de couleur
+    PLUS_QUATRE,    // Carte "+4" + changement de couleur
 }

@@ -21,8 +21,19 @@ public class CarteJoker extends Carte {
         return typeAction;
     }
 
+    /**
+     * Permet de définir la couleur choisie par le joueur pour le joker.
+     */
+    public void setCouleur(Couleur couleur) {
+        this.couleur = couleur;
+    }
+
     @Override
     public String toString() {
-        return "JOKER " + typeAction;
+        if (couleur == Couleur.AUCUNE) {
+            return "JOKER " + typeAction;
+        } else {
+            return "JOKER " + typeAction + " (" + couleur + ")";
+        }
     }
 }
